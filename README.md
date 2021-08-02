@@ -1,5 +1,5 @@
 # Indigo
-main
+paulina
 Parker Rho
 Ved Atal
 Dhruv Patel
@@ -8,4 +8,3 @@ SophieLirtzman
 Sophie Lirtzman
 Kaylee Ishihara
 Kaylee.I
-main
