@@ -1,0 +1,12 @@
+.sudokuCell {
+    background-color: white;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    height: 90px;
+}
+
+.sudokuCell {
+    text-align: center;
+    
+}
