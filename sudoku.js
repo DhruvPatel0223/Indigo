@@ -75,6 +75,7 @@ function checkCorrect(userNum) {
         }
     }
     if (!correct) {
+        $(selectedCell).addClass("incorrect");
         selectedCell.style.setProperty("background-color", "red");
     } else {
         selectedCell.style.setProperty("background-color", "yellow");
