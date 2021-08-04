@@ -20,7 +20,7 @@ for (var row = 0; row < $(".row").length; row++) {
             clickDiv.textContent = answerGrid[row][col];
         } else {
             clickDiv.addEventListener("click", selectCell, false);
-            clickDiv.style.setProperty("background-color", "lightgrey");
+            $(clickDiv).addClass('empty-cell');
         }
         rowArray.push(clickDiv);
     }
@@ -29,11 +29,13 @@ for (var row = 0; row < $(".row").length; row++) {
 
 
 function selectCell() {
-    if (selectedCell) {
-        selectedCell.style.setProperty("background-color", "lightgrey");
+    if (selectedCell && !($(selectedCell).hasClass('incorrect'))) {
+        $(selectedCell).removeClass('clicked')
+        $(selectedCell).addClass('empty-cell');
     }
     selectedCell = this;
-    this.style.setProperty("background-color", "yellow");
+    $(this).removeClass('empty-cell');
+    $(this).addClass("clicked");
     for (var row = 0; row < grid.length; row++) {
         if (grid[row].indexOf(this) != -1) {
             selectedCol = grid[row].indexOf(this);
@@ -75,10 +77,11 @@ function checkCorrect(userNum) {
         }
     }
     if (!correct) {
+        $(selectedCell).removeClass('clicked'); 
         $(selectedCell).addClass("incorrect");
-        selectedCell.style.setProperty("background-color", "red");
     } else {
-        selectedCell.style.setProperty("background-color", "yellow");
+        $(selectedCell).addClass('clicked');
+        $(selectedCell).removeClass('incorrect');
         if (winCheck()) {
             var btn = document.createElement("button");
             btn.innerHTML = "End Game";
