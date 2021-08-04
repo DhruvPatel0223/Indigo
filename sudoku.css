@@ -36,3 +36,8 @@
 .incorrect-clicked {
     background-color: palevioletred;
 }
+
+.btn {
+    margin-left: 1000;
+    text-anchor: middle;
+}
