@@ -25,18 +25,14 @@
     background-color: red;
 }
 
-.clicked-grey {
-    background-color: grey;
-}
-
-.clicked-red {
-    background-color: red;
-}
-
 .clicked {
     background-color: yellow;
 }
 
 .empty-cell {
     background-color: lightgrey;
+}
+
+.incorrect-clicked {
+    background-color: palevioletred;
 }

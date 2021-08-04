@@ -4,7 +4,7 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 var grid = [];
 var initialGrid = [[null, null, 8, 9, 1, null, 4, null, 7], [null, null, null, null, null, 7, null, null, 5], [1, null, 7, 2, 5, 4, null, null, null], [4, 7, null, null, 9, null, 2, 5, 6], [8, null, null, null, 2, null, null, null, 9], [null, 2, null, null, null, 5, 8, null, 1], [6, null, 5, null, 7, null, 1, 3, 2], [null, 1, 9, 5, 3, null, null, null, null], [null, null, null, 1, null, null, 5, 9, null]];
-var answerGrid = [[5, null, 8, 9, 1, null, 4, 2, 7], [null, null, null, null, null, 7, null, 1, 5], [1, null, 7, 2, 5, 4, null, 8, 3], [4, 7, null, null, 9, null, 2, 5, 6], [8, 5, null, null, 2, null, 3, null, 9], [null, 2, null, null, null, 5, 8, null, 1], [6, null, 5, null, 7, 9, 1, 3, 2], [null, 1, 9, 5, 3, null, 7, 6, null], [7, null, null, 1, null, null, 5, 9, null]];
+var answerGrid = [[5, null, 8, 9, 1, null, 4, 2, 7], [3, null, null, null, null, 7, null, 1, 5], [1, null, 7, 2, 5, 4, null, 8, 3], [4, 7, null, null, 9, null, 2, 5, 6], [8, 5, null, null, 2, null, 3, null, 9], [9, 2, null, null, null, 5, 8, null, 1], [6, 8, 5, 4, 7, 9, 1, 3, 2], [2, 1, 9, 5, 3, 8, 7, 6, 4], [7, null, null, 1, 6, 2, 5, 9, 8]];
 document.addEventListener("keyup", writeCell, false);
 var selectedCell = false;
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -30,12 +30,18 @@ for (var row = 0; row < $(".row").length; row++) {
 
 function selectCell() {
     if (selectedCell && !($(selectedCell).hasClass('incorrect'))) {
-        $(selectedCell).removeClass('clicked')
+        $(selectedCell).removeClass('clicked');
         $(selectedCell).addClass('empty-cell');
+    } else if (selectedCell) {
+        $(selectedCell).removeClass('incorrect-clicked');
     }
     selectedCell = this;
     $(this).removeClass('empty-cell');
-    $(this).addClass("clicked");
+    if (!$(this).hasClass('incorrect')) {
+        $(this).addClass("clicked");
+    } else {
+        $(this).addClass("incorrect-clicked");
+    }
     for (var row = 0; row < grid.length; row++) {
         if (grid[row].indexOf(this) != -1) {
             selectedCol = grid[row].indexOf(this);
@@ -45,9 +51,7 @@ function selectCell() {
 }
 
 function writeCell(event) {
-    if (event.key == "Backspace") {
-        selectedCell.textContent = "";
-    } else if (numbers.indexOf(event.key) != -1) {
+    if (numbers.indexOf(event.key) != -1) {
         selectedCell.textContent = event.key;
         checkCorrect(event.key);
     } else {
@@ -80,6 +84,7 @@ function checkCorrect(userNum) {
         $(selectedCell).removeClass('clicked'); 
         $(selectedCell).addClass("incorrect");
     } else {
+        $(selectedCell).removeClass('incorrect-clicked');
         $(selectedCell).addClass('clicked');
         $(selectedCell).removeClass('incorrect');
         if (winCheck()) {
