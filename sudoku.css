@@ -20,3 +20,19 @@
     border-right-width: 7px;
     border-color: black;
 }
+
+.incorrect {
+    background-color: red;
+}
+
+.clicked {
+    background-color: yellow;
+}
+
+.empty-cell {
+    background-color: lightgrey;
+}
+
+.incorrect-clicked {
+    background-color: palevioletred;
+}
