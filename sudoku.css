@@ -3,10 +3,20 @@
     border-color: black;
     border-width: 2px;
     border-style: solid;
-    height: 90px;
-}
-
-.sudokuCell {
+    height: 70px;
     text-align: center;
-    
+    font-size: 42px;
+    font-weight: bold;
+}
+#box {
+    width: 600px;
+    margin: auto;
+}
+.bottom {
+    border-bottom-width: 7px;
+    border-color: black;
+}
+.right {
+    border-right-width: 7px;
+    border-color: black;
 }
