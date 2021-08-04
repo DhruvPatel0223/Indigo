@@ -18,7 +18,7 @@ else if(mode == 2)
 }
 else if(mode == 3)
 {
-    initialGrid = [[6, 8, 7, 2, 4, 3, 9, 1, 5], [2, 5, 4, 7, 9, 1, 6, 8, 3], [9, 1, 3, 8, 6, 5, 4, 2, 7], [3, 4, 5, 6, 2, 9, 8, 7, 1], [7, 2, 6, 1, 5, 8, 3, 4, 9], [8, 9, 1, 3, 7, 4, 2, 5, 6], [4, 7, 9, 5, 8, 6, 1, 3, 2], [1, 6, 2, 4, 3, 7, 5, 9, 8], [5, 3, 8, 9, 1, 2, 7, 6, null]];
+    initialGrid = [[null, 8, 7, null, null, 3, 9, null, null], [null, 5, null, null, null, null, null, null, 3], [null, null, null, null, 6, 5, null, 2, 7], [3, null, null, null, null, null, null, null, 1], [null, null, null, null, null, 8, null, null, null], [null, 9, null, null, 7, 4, null, null, null], [4, 7, null, null, null, null, null, null, 2], [null, 6, 2, 4, null, 7, 5, null, 8], [null, 3, null, null, 1, null, null, 6, null]];
     answerGrid = [[6, 8, 7, 2, 4, 3, 9, 1, 5], [2, 5, 4, 7, 9, 1, 6, 8, 3], [9, 1, 3, 8, 6, 5, 4, 2, 7], [3, 4, 5, 6, 2, 9, 8, 7, 1], [7, 2, 6, 1, 5, 8, 3, 4, 9], [8, 9, 1, 3, 7, 4, 2, 5, 6], [4, 7, 9, 5, 8, 6, 1, 3, 2], [1, 6, 2, 4, 3, 7, 5, 9, 8], [5, 3, 8, 9, 1, 2, 7, 6, 4]];
 }
 document.addEventListener("keyup", writeCell, false);
