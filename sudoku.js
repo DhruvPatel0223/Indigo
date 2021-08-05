@@ -11,6 +11,8 @@ var sec = 0;
 // The running variable is a boolean that keeps track of whether the stopwatch should keep going or not
 var stoptime = true;
 
+var clickDisabled = false;
+
 // The grid variable is the grid that the player sees and updates according to what the player inputs
 var grid = [];
 
@@ -70,6 +72,9 @@ for (var row = 0; row < $(".row").length; row++) {
 }
 
 function selectCell() {
+    if (clickDisabled) {
+        return;
+    }
     startTimer();
     if (selectedCell && !($(selectedCell).hasClass('incorrect-clicked'))) {
         $(selectedCell).removeClass('clicked');
@@ -96,6 +101,8 @@ function selectCell() {
 function writeCell(event) {
     if (event.key == "Backspace") {
         selectedCell.textContent = "";
+        $(selectedCell).removeClass('incorrect incorrect-clicked');
+        $(selectedCell).addClass("clicked");
     }
     if (numbers.indexOf(event.key) != -1) {
         selectedCell.textContent = event.key;
@@ -130,11 +137,11 @@ function checkCorrect(playerNum) {
         $(selectedCell).removeClass('clicked');
         $(selectedCell).addClass("incorrect-clicked");
     } else {
-        $(selectedCell).removeClass('incorrect-clicked');
+        $(selectedCell).removeClass('incorrect-clicked incorrect');
         $(selectedCell).addClass('clicked');
-        $(selectedCell).removeClass('incorrect');
         if (winCheck()) {
             stopTimer();
+            clickDisabled = true;
             document.removeEventListener("keyup", writeCell, false);
             var btn = document.createElement("button");
             btn.innerHTML = "You Win! Click me to see your stats.";
