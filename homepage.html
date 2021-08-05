@@ -24,6 +24,43 @@
                 font-size: 3.5rem;
               }
             }
+
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+
+            .modal-content {
+              background-color: #fefefe;
+              margin: 5% auto;
+              padding: 20px;
+              border: 1px solid #888;
+              width: 60%;
+            }
+
+            .close {
+              color: #aaa;
+              font-size: 28px;
+              font-weight: bold;
+              position: absolute;
+              top: -5px;
+              left: 929px;
+            }
+
+            .close:hover,
+            .close:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
           </style>
 
     </head>
@@ -36,6 +73,9 @@
                 <a href="#" class="navbar-brand d-flex align-items-center">
                   <strong>Free Sudoku</strong>
                 </a>
+                <div class="navbar-brand d-flex align-items-center" id="myBtn">
+                  <strong>Help</strong>
+                </div>
               </div>
             </div>
         </header>
@@ -51,11 +91,55 @@
                     <button onclick="localStorage.setItem('mode', 1); document.location='sudoku.html'" class="btn btn-primary my-2">Easy</button>
                     <button onclick="localStorage.setItem('mode', 2); document.location='sudoku.html'" class="btn btn-primary my-2">Medium</button>
                     <button onclick="localStorage.setItem('mode', 3); document.location='sudoku.html'" class="btn btn-primary my-2">Hard</button>
+                    <button onclick="localStorage.setItem('mode', 4); document.location='sudoku.html'" class="btn btn-primary my-2">Test</button>
                     </p>
                 </div>
                 </div>
             </section>
+            <div id="myModal" class="modal">
+
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="display: inline-block;">
+                  <p>How to play Sudoku</p>
+                  <p>Goal</p>
+                  <p>The goal is to fill in all the empty cells on the board with the correct numbers.</p>
+                  <p>Rules</p>
+                  <p>Cells each take a number between 1 and 9. A number may only appear once in a single line, row, column, or three-by-three box.</p>
+                  <p>How to play</p>
+                  <p>Click a cell to select it (in yellow). Then type a number to set the number in the selected cell. A cell will turn red if a wrong number is put into the cell.</p>
+                </div>
+              </div>
+            
+            </div>
+            
           </main>
+          <script>
+              var modal = document.getElementById("myModal");
+
+              // Get the button that opens the modal
+              var btn = document.getElementById("myBtn");
+
+              // Get the <span> element that closes the modal
+              var span = document.getElementsByClassName("close")[0];
+
+              // When the user clicks on the button, open the modal
+              btn.onclick = function() {
+                modal.style.display = "block";
+              }
+
+              // When the user clicks on <span> (x), close the modal
+              span.onclick = function() {
+                modal.style.display = "none";
+              }
+
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+}
+          </script>
     </body>
 
 </html>
