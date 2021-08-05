@@ -3,19 +3,23 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 var grid = [];
-var answerGrid = [[5, null, 8, 9, 1, null, 4, 2, 7], [3, null, null, null, null, 7, null, 1, 5], [1, null, 7, 2, 5, 4, null, 8, 3], [4, 7, null, null, 9, null, 2, 5, 6], [8, 5, null, null, 2, null, 3, null, 9], [9, 2, null, null, null, 5, 8, null, 1], [6, 8, 5, 4, 7, 9, 1, 3, 2], [2, 1, 9, 5, 3, 8, 7, 6, 4], [7, null, null, 1, 6, 2, 5, 9, 8]];
+var initialGrid = [];
+var answerGrid = [];
 var mode = localStorage.getItem("mode");
 if(mode == 1) 
 {
-    var initialGrid = [[null, null, 8, 9, 1, null, 4, null, 7], [null, null, null, null, null, 7, null, null, 5], [1, null, 7, 2, 5, 4, null, null, null], [4, 7, null, null, 9, null, 2, 5, 6], [8, null, null, null, 2, null, null, null, 9], [null, 2, null, null, null, 5, 8, null, 1], [6, null, 5, null, 7, null, 1, 3, 2], [null, 1, 9, 5, 3, null, null, null, null], [null, null, null, 1, null, null, 5, 9, null]];
+    initialGrid = [[null, null, 8, 9, 1, null, 4, null, 7], [null, null, null, null, null, 7, null, null, 5], [1, null, 7, 2, 5, 4, null, null, null], [4, 7, null, null, 9, null, 2, 5, 6], [8, null, null, null, 2, null, null, null, 9], [null, 2, null, null, null, 5, 8, null, 1], [6, null, 5, null, 7, null, 1, 3, 2], [null, 1, 9, 5, 3, null, null, null, null], [null, null, null, 1, null, null, 5, 9, null]];
+    answerGrid = [[5, 6, 8, 9, 1, 3, 4, 2, 7], [3, 4, 2, 6, 8, 7, 9, 1, 5], [1, 9, 7, 2, 5, 4, 6, 8, 3], [4, 7, 3, 8, 9, 1, 2, 5, 6], [8, 5, 1, 7, 2, 6, 3, 4, 9], [9, 2, 6, 3, 4, 5, 8, 7, 1], [6, 8, 5, 4, 7, 9, 1, 3, 2], [2, 1, 9, 5, 3, 8, 7, 6, 4], [7, 3, 4, 1, 6, 2, 5, 9, 8]];
 }
 else if(mode == 2) 
 {
-    var initialGrid = [[null, null, 8, null, 1, null, 4, null, null], [null, null, null, null, null, 7, null, null, 5], [1, null, null, 2, 5, null, null, null, null], [null, 7, null, null, 9, null, 2, 5, null], [8, null, null, null, 2, null, null, null, null], [null, 2, null, null, null, 5, null, null, 1], [6, null, null, null, 7, null, 1, null, 2], [null, 1, null, null, 3, null, null, null, null], [null, null, null, 1, null, null, 5, 9, null]];
+    initialGrid = [[null, null, 8, null, null, null, 5, null, null], [null, 6, 3, null, null, null, null, null, 9], [4, 1, 5, null, null, 9, null, 7, null], [null, null, null, 1, 3, null, null, 8, null], [8, null, null, 9, null, null, 2, null, 7], [null, null, null, null, null, null, 6, null, null], [null, 5, null, 6, null, null, 8, 3, null], [null, null, null, 8, 1, null, null, null, null], [2, null, 4, 3, null, 7, 1, 9, null]];
+    answerGrid = [[9, 2, 8, 4, 7, 3, 5, 6, 1], [7, 6, 3, 5, 8, 1, 4, 2, 9], [4, 1, 5, 2, 6, 9, 3, 7, 8], [6, 7, 2, 1, 3, 5, 9, 8, 4], [8, 3, 1, 9, 4, 6, 2, 5, 7], [5, 4, 9, 7, 2, 8, 6, 1, 3], [1, 5, 7, 6, 9, 4, 8, 3, 2], [3, 9, 6, 8, 1, 2, 7, 4, 5], [2, 8, 4, 3, 5, 7, 1, 9, 6]];
 }
 else if(mode == 3)
 {
-    var initialGrid = [[null, null, null, 9, null, null, null, null, 7], [null, null, null, null, null, 7, null, null, null], [1, null, null, null, 5, 4, null, null, null], [4, null, null, null, null, null, 2, null, 6], [8, null, null, null, 2, null, null, null, null], [null, 2, null, null, null, null, null, null, 1], [null, null, null, null, 7, null, null, null, 2], [null, 1, null, 5, null, null, null, null, null], [null, null, null, 1, null, null, null, 9, null]];
+    initialGrid = [[null, 8, 7, null, null, 3, 9, null, null], [null, 5, null, null, null, null, null, null, 3], [null, null, null, null, 6, 5, null, 2, 7], [3, null, null, null, null, null, null, null, 1], [null, null, null, null, null, 8, null, null, null], [null, 9, null, null, 7, 4, null, null, null], [4, 7, null, null, null, null, null, null, 2], [null, 6, 2, 4, null, 7, 5, null, 8], [null, 3, null, null, 1, null, null, 6, null]];
+    answerGrid = [[6, 8, 7, 2, 4, 3, 9, 1, 5], [2, 5, 4, 7, 9, 1, 6, 8, 3], [9, 1, 3, 8, 6, 5, 4, 2, 7], [3, 4, 5, 6, 2, 9, 8, 7, 1], [7, 2, 6, 1, 5, 8, 3, 4, 9], [8, 9, 1, 3, 7, 4, 2, 5, 6], [4, 7, 9, 5, 8, 6, 1, 3, 2], [1, 6, 2, 4, 3, 7, 5, 9, 8], [5, 3, 8, 9, 1, 2, 7, 6, 4]];
 }
 document.addEventListener("keyup", writeCell, false);
 var selectedCell = false;
@@ -28,8 +32,8 @@ for (var row = 0; row < $(".row").length; row++) {
     for (var col = 0; col < rowElement.getElementsByClassName("col").length; col++) {
         var colElement = rowElement.getElementsByClassName("col")[col];
         var clickDiv = colElement.getElementsByClassName("sudokuCell")[0];
-        if (answerGrid[row][col] != null) {
-            clickDiv.textContent = answerGrid[row][col];
+        if (initialGrid[row][col] != null) {
+            clickDiv.textContent = initialGrid[row][col];
         } else {
             clickDiv.addEventListener("click", selectCell, false);
             $(clickDiv).addClass('empty-cell');
@@ -41,11 +45,12 @@ for (var row = 0; row < $(".row").length; row++) {
 
 
 function selectCell() {
-    if (selectedCell && !($(selectedCell).hasClass('incorrect'))) {
+    if (selectedCell && !($(selectedCell).hasClass('incorrect-clicked'))) {
         $(selectedCell).removeClass('clicked');
         $(selectedCell).addClass('empty-cell');
     } else if (selectedCell) {
         $(selectedCell).removeClass('incorrect-clicked');
+        $(selectedCell).addClass('incorrect');
     }
     selectedCell = this;
     $(this).removeClass('empty-cell');
@@ -63,6 +68,9 @@ function selectCell() {
 }
 
 function writeCell(event) {
+    if (event.key == "Backspace") {
+        selectedCell.textContent = "";
+    }
     if (numbers.indexOf(event.key) != -1) {
         selectedCell.textContent = event.key;
         checkCorrect(event.key);
@@ -94,15 +102,17 @@ function checkCorrect(userNum) {
     }
     if (!correct) {
         $(selectedCell).removeClass('clicked'); 
-        $(selectedCell).addClass("incorrect");
+        $(selectedCell).addClass("incorrect-clicked");
     } else {
         $(selectedCell).removeClass('incorrect-clicked');
         $(selectedCell).addClass('clicked');
         $(selectedCell).removeClass('incorrect');
         if (winCheck()) {
             var btn = document.createElement("button");
-            btn.innerHTML = "End Game";
+            btn.innerHTML = "You Win!";
             document.body.appendChild(btn);
+            $(btn).addClass('btn btn-primary my-2')
+            $(btn).attr("onclick", "document.location='endscreen.html'")
         }
     }
 }
@@ -110,7 +120,7 @@ function checkCorrect(userNum) {
 function winCheck() {
     for (var row = 0; row < 9; row++) {
         for (var col = 0; col < 9; col++) {
-            if (grid[row][col].textContent != answerGrid[row][col] && grid[row][col].textContent != "") {
+            if (grid[row][col].textContent != answerGrid[row][col]) {
                 return false;
             }
         }
