@@ -6,7 +6,8 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="sudoku.js"></script>
         <!-- CSS -->
         <style>
             .bd-placeholder-img {
@@ -46,9 +47,9 @@
                     <h1 class="fw-light">Play Free Sudoku</h1>
                     <p class="lead text-muted">Choose your difficulty from the options below and start playing!</p>
                     <p>
-                    <a href="sudoku.html" class="btn btn-primary my-2">Easy</a>
-                    <a href="sudoku.html" class="btn btn-primary my-2">Medium</a>
-                    <a href="sudoku.html" class="btn btn-primary my-2">Hard</a>
+                    <button onclick="localStorage.setItem('mode', 1); document.location='sudoku.html'" class="btn btn-primary my-2">Easy</button>
+                    <button onclick="localStorage.setItem('mode', 2); document.location='sudoku.html'" class="btn btn-primary my-2">Medium</button>
+                    <button onclick="localStorage.setItem('mode', 3); document.location='sudoku.html'" class="btn btn-primary my-2">Hard</button>
                     </p>
                 </div>
                 </div>
