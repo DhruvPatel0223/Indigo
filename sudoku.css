@@ -44,3 +44,9 @@
     margin-left: 1000;
     text-anchor: middle;
 }
+
+#timer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 30px;
+}
