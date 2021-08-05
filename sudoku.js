@@ -4,7 +4,6 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 var gridBox = document.getElementById("box");
-var endText = document.getElementById("endMessage");
 // These are all the variables for the stopwatch
 var min = 0;
 var sec = 0;
@@ -42,6 +41,7 @@ else if (mode == 3) {
 else if (mode == 4) {
     initialGrid = [[6, 8, 7, 2, 4, 3, 9, 1, 5], [2, 5, 4, 7, 9, 1, 6, 8, 3], [9, 1, 3, 8, 6, 5, 4, 2, 7], [3, 4, 5, 6, 2, 9, 8, 7, 1], [7, 2, 6, 1, 5, 8, 3, 4, 9], [8, 9, 1, 3, 7, 4, 2, 5, 6], [4, 7, 9, 5, 8, 6, 1, 3, 2], [1, 6, 2, 4, 3, 7, 5, 9, 8], [5, 3, 8, 9, 1, 2, 7, 6, null]];
     answerGrid = [[6, 8, 7, 2, 4, 3, 9, 1, 5], [2, 5, 4, 7, 9, 1, 6, 8, 3], [9, 1, 3, 8, 6, 5, 4, 2, 7], [3, 4, 5, 6, 2, 9, 8, 7, 1], [7, 2, 6, 1, 5, 8, 3, 4, 9], [8, 9, 1, 3, 7, 4, 2, 5, 6], [4, 7, 9, 5, 8, 6, 1, 3, 2], [1, 6, 2, 4, 3, 7, 5, 9, 8], [5, 3, 8, 9, 1, 2, 7, 6, 4]];
+    localStorage.setItem("difficulty", "test");
 }
 
 // Adds an event listener so that when the player types numbers,
@@ -141,7 +141,8 @@ function checkCorrect(playerNum) {
             $(btn).addClass('btn btn-primary my-2');
             gridBox.appendChild(btn);
             $(btn).attr("onclick", "document.location='endscreen.html'");
-            endText.textContent = `Congrats, you beat Sudoku ${localStorage.getItem("difficulty")} in *time*!`;
+            localStorage.setItem("minutes", min);
+            localStorage.setItem("seconds", sec);
         }
     }
 }
