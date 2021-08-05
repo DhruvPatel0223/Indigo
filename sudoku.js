@@ -75,7 +75,6 @@ function selectCell() {
     if (clickDisabled) {
         return;
     }
-    startTimer();
     if (selectedCell && !($(selectedCell).hasClass('incorrect-clicked'))) {
         $(selectedCell).removeClass('clicked');
         $(selectedCell).addClass('empty-cell');
@@ -99,6 +98,7 @@ function selectCell() {
 }
 
 function writeCell(event) {
+    startTimer();
     if (event.key == "Backspace") {
         selectedCell.textContent = "";
         $(selectedCell).removeClass('incorrect incorrect-clicked');
