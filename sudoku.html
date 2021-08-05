@@ -16,6 +16,9 @@
                 <a href="homepage.html" class="navbar-brand d-flex align-items-center">
                   <strong>Free Sudoku</strong>
                 </a>
+                <div class="navbar-brand d-flex align-items-center" id="myBtn">
+                    <strong>Help</strong>
+                  </div>
               </div>
             </div>
         </header>
@@ -286,6 +289,22 @@
             </div>
         </div>
         
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div style="display: inline-block;">
+                <h3>How to play Sudoku</h3>
+                <h4>Goal</h4>
+                <p>The goal is to fill in all the empty cells on the board with the correct numbers.</p>
+                <h4>Rules</h4>
+                <p>Cells each take a number between 1 and 9. A number may only appear once in a single line, row, column, or three-by-three box.</p>
+                <h4>How to play</h4>
+                <p>Click a cell to select it (in yellow). Then type a number to set the number in the selected cell. A cell will turn red if a wrong number is put into the cell.</p>
+              </div>
+            </div>
+          
+          </div>
         <script src="sudoku.js"></script>
     </body>
 </html>
