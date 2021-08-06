@@ -29,9 +29,9 @@ var answerGrid = [];
 var mode = localStorage.getItem("mode");
 
 //help button
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("popup");
 
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("btn");
 
 var span = document.getElementsByClassName("close")[0];
 
